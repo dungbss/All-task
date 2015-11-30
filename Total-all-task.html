@@ -18,11 +18,15 @@
     <p>- v367 Fix subtotal invoice :
     In admin/system/config/Tax/Orders, Invoices, Credit Memos Display Settings:
 	- Display Prices chose Excluding Tax
-	- Display Subtotal chose Excluding Tax</p>	
-	});}
-    <p>v370<br/>
+	- Display Subtotal chose Excluding Tax</p>
+    <p>- v370<br/>
     Set up cronjob: */5    *   *   *   *   curl -L -s http://dev.ap-nutrition.com/dev/cron.php. <br>
     Create url rewire set up redirect 301.
     </p>
+    <p>- V358
+    1.Url toi file bi sai sinh loi 404. Ta kiem tra lai url trong controler function indexAction. Check trong
+    template cos url va fix lai.
+    2. Fix total recoder page ta xem lai trong block colection bi overwrite ntn. Nhu errors site k extends duoc
+    class ta cop chen lai file can extends.</p>
 </body>
 </html>

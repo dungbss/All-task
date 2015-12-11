@@ -29,5 +29,31 @@
     2. Fix total recoder page ta xem lai trong block colection bi overwrite ntn. Nhu errors site k extends duoc
     class ta cop chen lai file can extends.</p>
     <p>- V346 10/12 Import- Export Category</p>
+    <p>-v254:
+    + Fix sự kiện k submit khi enter cho input
+	$('#formid').on('keyup keypress', function(e) {
+	  var code = e.keyCode || e.which;
+	  if (code == 13) { 
+	    e.preventDefault();
+	    return false;
+	  }
+	});
+     + Fix cart k nhận ở multi store
+     Copy this file: app/code/core/Mage/Checkout/Model/Session.php to: app/code/local/Mage/Checkout/Model/Session.php.
+     class Mage_Checkout_Model_Session extends Mage_Core_Model_Session_Abstract
+	{
+	   const CHECKOUT_STORE_ID = 1;
+	 
+	   public function getCheckoutStoreId()
+	   {
+	       return self::CHECKOUT_STORE_ID;
+	   }
+	Change CHECKOUT_STORE_ID value "1" to your Magento store ID with all products.
+	Next, find all such elements in the file:
+	Mage::app()->getStore()
+	and change them to:
+	Mage::app()->getStore($this->getCheckoutStoreId())
+    </p>
+    
 </body>
 </html>
